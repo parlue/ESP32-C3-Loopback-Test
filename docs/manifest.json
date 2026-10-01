@@ -1,0 +1,17 @@
+{
+  "name": "ESP32-C3 Loopback Test",
+  "version": "1.0.0",
+  "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "parts": [
+        {
+          "path": "firmware/loopback-merged.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

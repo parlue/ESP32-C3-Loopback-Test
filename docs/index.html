@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ESP32-C3 Loopback Test · Webflasher</title>
+<style>body{font:18px/1.6 system-ui,sans-serif;background:#101827;color:#edf3fc;margin:0}main{max-width:780px;margin:auto;padding:48px 24px}h1{line-height:1.2}a{color:#8cc8ff}.card{background:#1c2940;padding:24px;border-radius:16px;margin:24px 0}button{font:inherit;background:#78bfff;border:0;border-radius:9px;padding:14px 22px;cursor:pointer;color:#101827}code{color:#a9d6ff}.led{display:inline-block;width:14px;height:14px;background:#379aff;border-radius:50%;box-shadow:0 0 14px #379aff}small{color:#c5cede}</style>
+<script type="module" src="https://unpkg.com/esp-web-tools@10.1.1/dist/web/install-button.js?module"></script>
+</head><body><main><p>TESTFIRMWARE · ESP32-C3 SUPERMINI · v1.0.0</p>
+<h1>Ein blauer Impuls.<br>Ein geprüftes Testpaket.</h1>
+<p>Prüfe deinen ESP, deine MAX3232-Platine und dein Kabel mit einer TX/RX-Brücke. Kein BLE und kein Schachcomputer nötig.</p>
+<div class="card"><h2>Testchip installieren</h2>
+<p>Per USB-Datenkabel anschließen und den seriellen Monitor schließen. Die Installation ersetzt die bisherige Firmware. PGNs vorher sichern; eine gewählte Komplettlöschung entfernt auch gespeicherte Daten.</p>
+<esp-web-install-button manifest="manifest.json"><button slot="activate">Test-Firmware installieren</button><p slot="unsupported">Bitte einen Desktop-Browser mit Web Serial verwenden, z. B. Chrome oder Edge.</p><p slot="not-allowed">Der Flasher benötigt HTTPS.</p></esp-web-install-button>
+<noscript>Zum Flashen bitte JavaScript aktivieren.</noscript>
+<p><small>Keine Verbindung? BOOT halten, RESET kurz drücken, BOOT loslassen und erneut versuchen.</small></p></div>
+<h2>So prüfst du den Signalweg</h2><ol><li>Strom ausschalten. King/Phoenix abtrennen.</li><li>TX und RX brücken: direkt GPIO21/20 am isolierten ESP oder die beiden RS-232-Datenleitungen am DIN-Ausgang bzw. freien Kabelende.</li><li>Testchip mit Strom versorgen und die blaue LED beobachten.</li></ol>
+<p>Nur die Datenleitungen verbinden – keine Versorgung oder Masse. RS-232 niemals direkt an ESP-GPIOs legen; keine zwei aktiven Treiberausgänge verbinden.</p>
+<div class="card"><p><span class="led" aria-hidden="true"></span> <strong>Blauer Impuls etwa einmal pro Sekunde:</strong> 256 Bytes kamen vollständig und unverändert zurück.</p><p><strong>LED aus:</strong> kein erfolgreicher Rücklauf oder keine Versorgung. Ohne Brücke darf sie nicht blinken.</p></div>
+<p>38400 Baud · RX GPIO20 · TX GPIO21 · LED GPIO8 (aktiv LOW). USB-Detailprotokoll: 115200 Baud.</p>
+<p><a href="https://github.com/parlue/ESP32-C3-Loopback-Test">Quellen und vollständige Anleitung</a> · <a href="firmware/loopback-merged.bin">Firmware herunterladen</a> · <a href="firmware/SHA256SUMS">SHA256</a></p>
+<footer><small>Webflasher mit <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>. Projekt von Dirk D. Sommerfeld.</small></footer></main></body></html>
